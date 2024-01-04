@@ -4,9 +4,7 @@ const getTasks = async (req, res) => {
 
     try {
 
-        const task = await Task.find({
-            user: req.user.id
-        }).populate('user')
+        const task = await Task.find().populate('user')
         res.json(task)
 
     } catch (error) {

@@ -7,6 +7,9 @@ import cors from 'cors'
 import routerAuth from './routes/auth.routes.js';
 import taskRouter from './routes/task.routes.js';
 
+import swaggerSpec from './SwaggerConfig.js';
+import swaggerUI from 'swagger-ui-express'
+
 const app = express()
 
 app.use(morgan('dev'))
@@ -16,6 +19,7 @@ app.use(cors())
 
 app.use('/api/', routerAuth)
 app.use('/api/', taskRouter)
+app.use("/api-docs",swaggerUI.serve, swaggerUI.setup(swaggerSpec) )
 
 connectDB()
 app.listen(4000)

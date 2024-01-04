@@ -83,7 +83,7 @@ const logout = async (req, res) => {
         res.cookie('token', "", {
             expires: new Date(0),
         })
-        return res.sendStatus(200)
+        return res.json({message: "Usuario Deslogueado" })
     } catch (error) {
         res.status(500).json({ message: error.message })
         console.log(error);
